@@ -1,0 +1,263 @@
+@import url('./font.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body,
+html {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.ad {
+  width: 100%;
+  padding: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: darkorange;
+  color: white;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  width: 100%;
+  border: 2px solid #000;
+  border-left: 0;
+  border-right: 0;
+  padding-left: 20px;
+}
+
+.addTodo {
+  border-left: 2px solid #000;
+  min-width: 40%;
+  max-width: 80%;
+  display: flex;
+}
+
+.addTodo input,
+.addTodo button {
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  width: 70%;
+}
+
+.addTodo button {
+  width: 30%;
+  border-left: 2px solid #000;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.tasks {
+  height: calc(100vh - 75px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasks .tasks__progress,
+.tasks .tasks__success {
+  width: 50%;
+  height: 100%;
+  padding: 25px;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.tasks__progress {
+  border-right: 2px solid #000;
+}
+
+.tasks__success::-webkit-scrollbar,
+.tasks__progress::-webkit-scrollbar {
+  width: 12px;
+  /* ширина scrollbar */
+}
+
+/* .tasks__progress::-webkit-scrollbar-track {
+  background: orange;        цвет дорожки
+} */
+.tasks__success::-webkit-scrollbar-thumb,
+.tasks__progress::-webkit-scrollbar-thumb {
+  background-color: #000;
+  /* цвет плашки */
+  border-radius: 20px;
+  /* закругления плашки */
+  border: 3px solid #fff;
+  /* padding вокруг плашки */
+}
+
+.tasks__progress .task {
+  background-color: #8dd78d;
+}
+
+.tasks__success .task {
+  background-color: #ff9c9c;
+}
+
+.tasks__success .task p {
+  text-decoration: line-through;
+}
+
+.task {
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 #000;
+  margin-bottom: 15px;
+  background-color: #8dd78d;
+  display: flex;
+}
+
+.task input {
+  display: none;
+}
+
+.task label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #000;
+  cursor: pointer;
+  margin-right: 15px;
+  position: relative;
+}
+
+.tasks__progress .task.success label::after,
+.tasks__success .task label::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 12px;
+  border: 2px solid #000;
+  border-top: 0;
+  border-right: 0;
+
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+}
+
+.task p {
+  flex: 1 0 0;
+}
+
+.close__text {
+  transform: translate(-50%, -0%) rotate(-90deg);
+  position: absolute;
+  width: 50vh;
+  left: 50%;
+  text-align: center;
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tasks .close.close-animate .task {
+  animation: close-slide-child .8s ease 1s backwards;
+}
+.tasks .tasks__progress.close.close-animate,
+.tasks .tasks__success.close.close-animate {
+  animation: close-slide 1s ease;
+}
+@keyframes close-slide {
+ 100% {
+    width: 8vw;
+  }
+  0% {
+    width: 92vw;
+  }
+}
+@keyframes close-slide-child {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.tasks .open.open-animate .task {
+  animation: open-slide-child .8s ease 1s backwards;
+}
+.tasks .tasks__progress.open.open-animate,
+.tasks .tasks__success.open.open-animate {
+  animation: open-slide 1s ease;
+}
+@keyframes open-slide {
+  0% {
+    width: 8vw;
+  }
+
+  100% {
+    width: 92vw;
+  }
+}
+@keyframes open-slide-child {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  99% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tasks__progress.close {
+    background: #8dd78d;
+  }
+
+  .tasks__success.close {
+    background: #ff9c9c;
+  }
+
+  .tasks .tasks__progress,
+  .tasks .tasks__success {
+    overflow: hidden;
+  }
+
+  .tasks .open {
+    width: 92vw;
+  }
+
+  .tasks .close {
+    width: 8vw;
+    padding: 5px;
+  }
+
+  .tasks .close .task {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .tasks .close .close__text {
+    opacity: 1;
+    visibility: visible;
+  }
+}
