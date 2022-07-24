@@ -249,6 +249,11 @@ html {
     opacity: 1;
   }
 }
+@media screen and (max-width: 780px) {
+  .task button {
+    display: block;
+  }
+}
 
 @media screen and (max-width: 480px) {
   .tasks__progress.close {
