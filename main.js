@@ -30,14 +30,14 @@ function render() {
     tasksProgress.innerHTML = ''
     progress.forEach(todo => template(tasksProgress, todo));
   } else {
-    tasksProgress.innerHTML = '<span>Пусто</span>';
+    tasksProgress.innerHTML = '<span>Empty</span>';
   }
 
   if (!!success.length) {
     tasksSuccess.innerHTML = ''
     success.forEach(todo => template(tasksSuccess, todo));
   } else {
-    tasksSuccess.innerHTML = '<span>Пусто</span>';
+    tasksSuccess.innerHTML = '<span>Empty</span>';
   }
 
 }

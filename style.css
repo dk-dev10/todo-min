@@ -199,16 +199,11 @@ html {
   opacity: 0;
   visibility: hidden;
 }
-.tasks .close span {
+.tasks  span {
   text-align: center;
-  display: none;
-}
-.tasks .open span {
-  text-align: center;
-}
-.tasks .open span {
   display: block;
 }
+
 .close-animate .task {
   animation: close-slide-child 0.8s ease 1s backwards;
 }
@@ -267,6 +262,10 @@ html {
 }
 
 @media screen and (max-width: 480px) {
+  .tasks .close span {
+    text-align: center;
+    display: none;
+  }
   .tasks__progress.close {
     background: #8dd78d;
   }
