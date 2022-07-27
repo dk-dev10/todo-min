@@ -187,26 +187,37 @@ html {
   box-shadow: 1px 1px 0 #000;
 }
 
-.close__text {
-  transform: translate(-50%, -0%) rotate(-90deg);
+.tasks__success::after, .tasks__progress::after {
+  content: 'Open Progress Tasks!';
+  display: block;
+  transform: translate(-50%, 50%) rotate(-90deg);
   position: absolute;
-  width: 50vh;
+  width: 300px;
   left: 50%;
   text-align: center;
-  top: 50%;
+  top: 30%;
   opacity: 0;
   visibility: hidden;
 }
-
-.tasks .close.close-animate .task {
-  animation: close-slide-child .8s ease 1s backwards;
+.tasks .close span {
+  text-align: center;
+  display: none;
+}
+.tasks .open span {
+  text-align: center;
+}
+.tasks .open span {
+  display: block;
+}
+.close-animate .task {
+  animation: close-slide-child 0.8s ease 1s backwards;
 }
 .tasks .tasks__progress.close.close-animate,
 .tasks .tasks__success.close.close-animate {
   animation: close-slide 1s ease;
 }
 @keyframes close-slide {
- 100% {
+  100% {
     width: 8vw;
   }
   0% {
@@ -221,7 +232,7 @@ html {
 }
 
 .tasks .open.open-animate .task {
-  animation: open-slide-child .8s ease 1s backwards;
+  animation: open-slide-child 0.8s ease 1s backwards;
 }
 .tasks .tasks__progress.open.open-animate,
 .tasks .tasks__success.open.open-animate {
@@ -283,7 +294,8 @@ html {
     visibility: hidden;
   }
 
-  .tasks .close .close__text {
+  .close.tasks__progress::after,
+  .close.tasks__success::after {
     opacity: 1;
     visibility: visible;
   }
